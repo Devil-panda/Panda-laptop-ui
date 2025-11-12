@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body {
+    background-color: transparent;
+}
+
+.ql-snow.ql-editor {
+    /* Set a flexible height and enable scrolling */
+    min-height: 150px; /* Or whatever minimum height you prefer */
+    height: 100%; /* Make it fill its parent */
+    overflow-y: auto; /* Enable vertical scrolling */
+    white-space: normal; /* Allow text to wrap naturally */
+    word-wrap: break-word; /* Break long words */
+}
+
+/* Ensure the parent of ReactQuill manages its height correctly */
+.quill-editor-container {
+    display: flex; /* Flex container */
+    flex-direction: column; /* Stack toolbar and editor vertically */
+    flex-grow: 1; /* Allow it to grow and take available space */
+    height: 0; /* Important for flex-grow to work correctly with Quill's internal structure */
+    min-height: 150px; /* Ensure a minimum visible height */
+    border: 1px solid #333 !important; /* A subtle dark border for the entire editor */
+    border-radius: 0.375rem; /* Matches your rounded-md */
+    overflow: hidden; /* Important for containing Quill's internal overflow */
+}
+
+/* Remove default Quill borders from toolbar and content area */
+.ql-snow.ql-toolbar,
+.ql-snow.ql-container {
+    border: none !important;
+}
+
+/* Styles for the scrollbar within the Quill editor content */
+.ql-snow.ql-editor::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+}
+.ql-snow.ql-editor::-webkit-scrollbar-track {
+  background: #2c2c2c; /* Color of the track */
+  border-radius: 4px;
+}
+.ql-snow.ql-editor::-webkit-scrollbar-thumb {
+  background-color: #555; /* Color of the scroll thumb */
+  border-radius: 4px; /* Roundness of the scroll thumb */
+  border: 2px solid #2c2c2c; /* Space around scroll thumb */
+}
+.ql-snow.ql-editor::-webkit-scrollbar-thumb:hover {
+  background-color: #777; /* Color when hovered */
+}
+
+
+/* Changes the placeholder text color to white */
+.ql-editor.ql-blank::before {
+    color: #fff !important;
+    opacity: 0.6;
+    font-style: normal !important;
+    left: 15px !important; /* Adjust if placeholder is too far left */
+    right: 15px !important; /* Adjust if placeholder is too far right */
+}
+
+/* Changes the color of the toolbar icons to white */
+.ql-snow .ql-stroke {
+    stroke: white;
+}
+.ql-snow .ql-fill { /* For filled icons like blockquote */
+    fill: white;
+}
+.ql-snow .ql-picker-label {
+    color: white;
+}
+.ql-snow .ql-picker-options {
+    background-color: #333;
+    border-color: #555 !important;
+}
+.ql-snow .ql-picker-item:hover {
+    background-color: #444;
+}
+.ql-snow .ql-active .ql-stroke,
+.ql-snow .ql-active .ql-fill {
+    stroke: #3b82f6;
+    fill: #3b82f6;
+}
+.ql-snow .ql-active .ql-picker-label {
+    color: #3b82f6;
+}
+
+/* Ensure the Quill toolbar background is dark */
+.ql-toolbar.ql-snow {
+    background-color: #1a1a1a; /* Dark background for toolbar */
+    border-top-left-radius: 0.375rem; /* Rounded corners match container */
+    border-top-right-radius: 0.375rem;
+}
+
+/* Ensure the Quill editor content area background is dark */
+.ql-container.ql-snow {
+    background-color: #212121; /* Dark background for editor content */
+    border-bottom-left-radius: 0.375rem; /* Rounded corners match container */
+    border-bottom-right-radius: 0.375rem;
+}
+
+/* Styling for images inserted into the editor */
+.ql-editor img {
+    max-width: 100%; /* Ensure images don't overflow the editor */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Prevent extra space below image */
+    margin: 10px 0; /* Add some spacing */
+    border-radius: 4px; /* Slightly rounded corners for images */
+}
